@@ -50,7 +50,7 @@ export const añadirMuestra = () => {
 export const generarGrafica = () => {
     //console.log(m, b);
     if(!isNaN(m) && !isNaN(b)){
-        console.log("Se puede generar el modelo matematico");
+        console.log("Se puede generar el modelo matematico :)");
 
         const grafica1 = document.querySelector(".grafica1");
         const grafica2 = document.querySelector(".grafica2");
