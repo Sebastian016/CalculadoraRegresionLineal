@@ -4,6 +4,7 @@ body{
     font-size: 15px;
     color: rgb(10, 71, 92);
 }
+
 .header{
     display: flex;
     flex-direction: row;
@@ -70,4 +71,9 @@ p{
 
 .msjError{
     color: red;
+}
+
+.grafica{
+    width: 500px;
+    height: 500px;
 }

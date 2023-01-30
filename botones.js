@@ -132,8 +132,13 @@ export const generarGrafica = () => {
        // console.log("Se puede generar el modelo matematico :)");
 
        //Se crea la grafica siguiendo la documentacion de chart Js
-        const grafica1 = document.querySelector(".grafica1");
-        const grafica2 = document.querySelector(".grafica2");
+
+        const grafica1 = document.createElement('canvas');
+        const grafica2 = document.createElement('canvas');
+        document.querySelector(".graficas").children.item(0).innerHTML = "";
+        document.querySelector(".graficas").children.item(1).innerHTML = "";
+        document.querySelector(".graficas").children.item(0).appendChild(grafica1);
+        document.querySelector(".graficas").children.item(1).appendChild(grafica2);
         const punto1 = {x: 0, y: b};
         const punto2 = {x: arrVarX[arrVarX.length - 1]};
         punto2.y = m * punto2.x + b;
