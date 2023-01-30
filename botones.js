@@ -197,7 +197,7 @@ export const generarGrafica = () => {
 }
 
 export const cambiarTema = () => {
-    console.log("Se cambio el tema de la app");
+    document.querySelector("body").classList.toggle("modo-oscuro");
 }
 
 
