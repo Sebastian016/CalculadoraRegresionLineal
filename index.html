@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora regresion lineal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <div class="header">
+        <header>Calculadora de Regresion Lineal</header>
+        <div class="fa-solid fa-circle-half-stroke btnTema"></div>
+    </div>
+    <div>
+        <p>Añade las muestras que sean necesarias(x,y)</p>
+    </div>
+    <nav class="navegacion">
+        <div class="btnMuestra btn">Añadir muestra</div>
+        <div class="btnModelo btn">Mostrar modelo matematico</div>
+        <div class="btnGrafica btn">Generar Grafica</div>
+    </nav>
+    <main>
+        <div class="main">
+            <div class="tablaMuestras"></div>
+        </div>
+        <div class="modeloMatDiv">
+            <div class="modeloMat"></div>
+        </div>
+        <div class="graficas">
+            <div style="width: 450px; height: 450px;">
+                <canvas class="grafica1"></canvas>
+            </div>
+            <div style="width: 450px; height: 450px;">
+                <canvas class="grafica2"></canvas>
+            </div>
+        </div>
+    </main>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
+    <script  type="module" src="/app.js"></script>
+
+</body>
+</html>
