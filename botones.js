@@ -5,6 +5,8 @@ let arrVarY = [];
 
 //Esta funcion añade los inputs de las muestras
 export const añadirMuestra = () => {
+    //Si hay un mensaje de error en la pantalla se elimina
+    eliminarError();
     const tablaMuestras = document.querySelector(".tablaMuestras");
     const muestraX = document.createElement("input");
     const muestraY = document.createElement("input");
@@ -29,17 +31,18 @@ export const generarModelo = () => {
     //Validaciones antes de generar el modelo matematico 
     //Al menos debe de haber 2 muestras
     //Importante tener en cuenta que una muestra es un par de inputs
+    
     if(muestras.length === 0){
-        console.log("Oye no has puesto ninguna muestra");
+        mostrarError("No has puesto ninguna muestra");
     } else if(muestras.length === 2){
-        console.log("Oye se necesitan al menos dos muestras");
+        mostrarError("Se necesitan al menos dos muestras");
     } else {
         //Una vez que se hayan pasado las validaciones 
         arrVarX = [];
         arrVarY = [];
 
         //Se leen los datos de los inputs muestra 
-        leerMuestra(muestras, arrVarX, arrVarY);
+        leerMuestra(muestras);
 
         //Validacion de si todos los datos son numeros
         if(validarMuestras(arrVarX) && validarMuestras(arrVarY)){
@@ -49,21 +52,28 @@ export const generarModelo = () => {
             
             //Se muestra el modelo matematico en pantalla
             const divModeloMat = document.querySelector(".modeloMat");
+
             if(b >= 0){
-                divModeloMat.innerHTML = ` Modelo matematico: y = ${m}x + ${Math.abs(b)}`
+                eliminarError();
+                divModeloMat.innerHTML = ` 
+                Modelo matematico: y = ${m}x + ${Math.abs(b)}
+                `
             } else {
-                divModeloMat.innerHTML = `Modelo matematico: y = ${m}x - ${Math.abs(b)}`
+                eliminarError();
+                divModeloMat.innerHTML = `
+                Modelo matematico: y = ${m}x - ${Math.abs(b)}
+                `
             }
 
         } else {
-            console.log("Asegurate de que todos los campos esten llenos o que todos los campos sean numeros");
+            mostrarError("Los campos deben estar llenos y deben ser numeros");
         }
     }
 
     
 }
 //Se recorre todo el array de inputs dependiendo su su id ("x" o "y") se agregara al arrreglo de variables x o y 
-const leerMuestra = (muestras, arrVarX, arrVarY) => {
+const leerMuestra = (muestras) => {
     muestras.forEach( muestra => {
         if(muestra.id === "x"){
             arrVarX.push(parseFloat(muestra.value));
@@ -78,6 +88,22 @@ const leerMuestra = (muestras, arrVarX, arrVarY) => {
 //Se verifica que todos los datos son numeros 
 const validarMuestras = (muestras) => {
     return muestras.every(muestra => !isNaN(muestra));
+}
+
+//Se muestra el mensaje de error en la pantalla 
+const mostrarError = (msjError) => {
+    const divModeloMat = document.querySelector(".modeloMat");
+    divModeloMat.innerHTML = `
+    <div class="msjError">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>${msjError}</span>
+    </div> `
+}
+
+//Eliminar el mensaje de error en la pantalla
+const eliminarError = () => {
+    const divModeloMat = document.querySelector(".modeloMat");
+    divModeloMat.innerHTML = "";
 }
 
 //Se realizan las operaciones del metodo de los minimos cuadrados y se determina el valor de b y m
@@ -160,11 +186,14 @@ export const generarGrafica = () => {
             }
         });
     } else  {
-        console.log("Primero necesitas generar el modelo matematico");
+        mostrarError("Primero necesitas generar el modelo matematico");
     }
 
 }
 
+export const cambiarTema = () => {
+    console.log("Se cambio el tema de la app");
+}
 
 
 
